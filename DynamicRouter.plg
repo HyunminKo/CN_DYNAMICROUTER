@@ -1,0 +1,47 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DynamicRouter - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\¿Ø¿Á√∂\LOCALS~1\Temp\RSP1C.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /D "WPCAP" /D "HAVE_REMOTE" /FR"Debug/" /Fp"Debug/DynamicRouter.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\DynamicRouter\UDP.cpp"
+]
+Creating command line "cl.exe @"C:\DOCUME~1\¿Ø¿Á√∂\LOCALS~1\Temp\RSP1C.tmp"" 
+Creating temporary file "C:\DOCUME~1\¿Ø¿Á√∂\LOCALS~1\Temp\RSP1D.tmp" with contents
+[
+wpcap.lib ws2_32.lib Packet.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/DynamicRouter.pdb" /debug /machine:I386 /out:"Debug/DynamicRouter.exe" /pdbtype:sept 
+.\Debug\AddStaticTable.obj
+.\Debug\ArpLayer.obj
+.\Debug\BaseLayer.obj
+.\Debug\DynamicRouter.obj
+.\Debug\DynamicRouterDlg.obj
+.\Debug\EthernetLayer.obj
+.\Debug\IpLayer.obj
+.\Debug\LayerManager.obj
+.\Debug\MyThread.obj
+.\Debug\PacketDriverLayer.obj
+.\Debug\ProxyARP.obj
+.\Debug\RIP.obj
+.\Debug\RoutingTable.obj
+.\Debug\StdAfx.obj
+.\Debug\UDP.obj
+.\Debug\DynamicRouter.res
+]
+Creating command line "link.exe @"C:\DOCUME~1\¿Ø¿Á√∂\LOCALS~1\Temp\RSP1D.tmp""
+<h3>Output Window</h3>
+Compiling...
+UDP.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+DynamicRouter.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

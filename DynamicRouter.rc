@@ -1,0 +1,280 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어(대한민국) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\DynamicRouter.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.kor\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\DynamicRouter.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "DynamicRouter 정보"
+FONT 9, "굴림"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "DynamicRouter 버전 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2008",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "확인",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_DynamicRouter_DIALOG DIALOGEX 0, 0, 621, 282
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "DynamicRouter"
+FONT 9, "굴림", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Routing Table",IDC_STATIC,7,2,331,178
+    GROUPBOX        "ARP Cache Table",IDC_STATIC,341,2,270,178
+    CONTROL         "List1",IDC_LIST_ROUTING_TABLE,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,10,11,322,145
+    CONTROL         "List2",IDC_LIST_CACHE_TABLE,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,345,11,261,145
+    PUSHBUTTON      "Add",IDC_BUTTON_ROUTING_ADD,21,160,57,15
+    PUSHBUTTON      "All Clear",IDC_BUTTON_ROUTING_ALLCLEAR,142,160,57,15
+    PUSHBUTTON      "Delete",IDC_BUTTON_CACHE_DELETE,430,160,91,15
+    GROUPBOX        "Network Card Information",IDC_STATIC,7,183,330,89
+    COMBOBOX        IDC_COMBO_NIC,63,203,268,110,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_IPADDR,63,226,91,15,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_MACADDR,221,225,108,15,ES_AUTOHSCROLL
+    LTEXT           "Network Card :",IDC_STATIC,11,204,51,12
+    LTEXT           "IP Address :",IDC_STATIC,18,229,40,8
+    LTEXT           "MAC Address :",IDC_STATIC,167,229,51,8
+    PUSHBUTTON      "Start",IDC_BUTTON_START,125,251,83,17
+    GROUPBOX        "Proxy ARP Entry",IDC_STATIC,342,183,269,89
+    CONTROL         "List1",IDC_LIST_PROXY,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,345,193,261,55
+    PUSHBUTTON      "Add",IDC_BUTTON_PROXY_ADD,384,251,91,16
+    PUSHBUTTON      "Delete",IDC_BUTTON_PROXY_DELETE,479,251,91,16
+    PUSHBUTTON      "Set",IDC_BUTTON_SET,38,251,83,17
+    PUSHBUTTON      "End",IDC_BUTTON_END,212,251,83,17
+    PUSHBUTTON      "Item Delete",IDC_BUTTON_ROUTING_DELETE,82,160,56,15
+    PUSHBUTTON      "Save",IDC_BUTTON_SAVE,264,160,57,15
+    PUSHBUTTON      "Open",IDC_BUTTON_OPEN,203,160,57,15
+END
+
+IDD_DIALOG_ADD_ROUTE DIALOG 0, 0, 184, 132
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Add Static Route"
+FONT 10, "System"
+BEGIN
+    GROUPBOX        "Add Table",IDC_STATIC,7,3,168,118
+    LTEXT           "Destination :",IDC_STATIC,14,17,42,12
+    LTEXT           "NetMask :",IDC_STATIC,22,32,36,8
+    LTEXT           "Gateway :",IDC_STATIC,22,46,32,10
+    LTEXT           "Flag :",IDC_STATIC,35,74,18,9
+    LTEXT           "Interface :",IDC_STATIC,21,88,33,14
+    PUSHBUTTON      "Add",IDC_BUTTON_ADD,27,104,58,13
+    PUSHBUTTON      "Cancel",IDC_BUTTON_CANCEL,89,104,58,13
+    EDITTEXT        IDC_EDIT_DESTINATION,60,15,109,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_GATEWAY,60,45,109,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_NETMASK,60,30,109,12,ES_AUTOHSCROLL
+    CONTROL         "UP",IDC_CHECK_UP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,61,75,23,9
+    CONTROL         "Gateway",IDC_CHECK_GATEWAY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,91,74,40,11
+    CONTROL         "Host",IDC_CHECK_HOST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,139,74,30,11
+    COMBOBOX        IDC_COMBO_INTERFACE,60,87,112,54,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Metric :",IDC_STATIC,29,61,27,10
+    EDITTEXT        IDC_EDIT_METRIC,60,60,47,12,ES_AUTOHSCROLL
+END
+
+IDD_DIALOG_PROXY_ARP DIALOG 0, 0, 190, 75
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Proxy ARP Entry"
+FONT 10, "System"
+BEGIN
+    GROUPBOX        "Proxy ARP Adding",IDC_STATIC,7,3,175,64
+    LTEXT           "Device :",IDC_STATIC,12,13,29,13
+    LTEXT           "IP Addr :",IDC_STATIC,12,31,28,13
+    COMBOBOX        IDC_COMBO_DEVICE,44,14,133,73,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_IPADDRESS,44,30,133,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "OK",IDC_BUTTON_OK,34,47,61,14
+    PUSHBUTTON      "CANCEL",IDC_BUTTON_CANCEL,99,47,61,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041204B0"
+        BEGIN
+            VALUE "FileDescription", "DynamicRouter MFC 응용 프로그램"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "DynamicRouter"
+            VALUE "LegalCopyright", "Copyright (C) 2008"
+            VALUE "OriginalFilename", "DynamicRouter.EXE"
+            VALUE "ProductName", "DynamicRouter 응용 프로그램"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_DynamicRouter_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 614
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 275
+    END
+
+    IDD_DIALOG_ADD_ROUTE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 177
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 125
+    END
+
+    IDD_DIALOG_PROXY_ARP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 183
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 68
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_CURSOR1             CURSOR                  "res\\cursor1.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "DynamicRouter 정보(&A)..."
+END
+
+#endif    // 한국어(대한민국) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE 18, 1
+#pragma code_page(949)
+#endif //_WIN32
+#include "res\DynamicRouter.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.kor\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
