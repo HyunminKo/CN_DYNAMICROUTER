@@ -132,7 +132,7 @@ BOOL CRIP::Receive(unsigned char *ppayload, char* NICDescription, unsigned char*
 					str2.Format("%s",((CDynamicRouterDlg*)mp_aUpperLayer[0])->m_Addr[i]->MacAddrDescrip);			
 					if( !str1.Compare(str2) ){
 						if( (!layer->Send((unsigned char*)&m_header,4)) ) 
-							AfxMessageBox("RIP Request Sending Error-_-更食;;");
+							AfxMessageBox("RIP Request Sending Error");
 					}
 				}
 			}
@@ -270,7 +270,7 @@ int CRIP::FindRedundancy(unsigned char *ipAddr)
 	return -1;
 }
 
-// Triggered Update with Split horizons
+// Triggered Update with Split horizons2
 void CRIP::TriggeredUpdate(BOOL *update, char* NICDescription)
 {
 	int i=0,n=0, ripCnt=0;
@@ -313,7 +313,7 @@ void CRIP::TriggeredUpdate(BOOL *update, char* NICDescription)
 				if( str1.Compare(str2) )
 				{					
 					if( (!layer->Send((unsigned char*)&m_header,ripCnt*20+4)) ) 
-						AfxMessageBox("RIP Triggered Update Sending Error-_-更食;;");
+						AfxMessageBox("RIP Triggered Update Sending Error");
 				}				
 			}
 		}

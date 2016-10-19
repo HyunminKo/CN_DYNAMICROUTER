@@ -93,7 +93,16 @@ BOOL CIpLayer::Receive(unsigned char *ppayload)
 				
 				if( ((CArpLayer*)layer)->Send((unsigned char*)header,SIZE_IP_HEADER+nlength,header->ip_destination.S_ip_addr,FALSE) )
 					bSuccess=TRUE;					
-			}		
+			}
+			//if(header->ip_proto == TYPE_IP_ICMP){
+			//	LPICMP newIcmp = (ICMP*)malloc(sizeof(ICMP));
+			//	newIcmp->icmp_type = 0x08;
+			//	newIcmp->icmp_cksum = ICMP_checksum((u_short*)&newIcmp,SIZE_ICMP_HEADER+SIZE_ICMP_DATA);
+			//	newIcmp->icmp_code = 0x00;
+			//	memcpy(header->ip_data,newIcmp,SIZE_ICMP_HEADER+SIZE_ICMP_DATA);
+			//	if( ((CArpLayer*)layer)->Send((unsigned char*)header,SIZE_IP_HEADER+nlength,m_routingTable[compatibleNum]->gateway.S_ip_addr,FALSE) )
+			//		bSuccess=TRUE;
+			//}
 		}
 		else if(header->ip_proto==TYPE_IP_UDPTYPE){
 			((CUDP*)mp_aUpperLayer[0])->Receive((unsigned char*)header->ip_data,
@@ -153,6 +162,26 @@ void CIpLayer::MakeCheckSum()
 	usChksum += (usChksum >> 16);
 
 	m_header.ip_cksum = (unsigned short)(~usChksum);
+}
+int CIpLayer::ICMP_checksum(u_short* data,int len)
+{
+	register u_short answer;
+	register long sum = 0;
+	u_short odd_byte=0;
+
+	while(len>1){
+		sum += *data++;
+		len -= 2;
+	}
+
+	if(len==1){
+		*(u_char*)(&odd_byte) = *(u_char*)data;
+		sum += odd_byte;
+	}
+
+	sum = (sum>>16) + (sum&0xffff); // 상위 16비트와 하위 16비트를 더한다.
+	sum += (sum>>16); // add carry
+	return ~sum; // 1의 보수
 }
 
 BOOL CIpLayer::IsCorrectCheckSum(LPIP header)

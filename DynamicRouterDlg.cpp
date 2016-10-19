@@ -314,7 +314,7 @@ void CDynamicRouterDlg::GetMacAddr()
 	AdapterLength = sizeof(AdapterName);
 	
 	if(PacketGetAdapterNames(AdapterName,&AdapterLength)==FALSE){
-		AfxMessageBox("NIC 못찾았어-_-");
+		AfxMessageBox("NIC 못찾았습니다.");
 		return ;
 	}	
 		  
@@ -454,7 +454,7 @@ unsigned char* CDynamicRouterDlg::IpAddrStoN(char* IpString)
 		}
 		temp++;
 	}
-	AfxMessageBox("IP주소 바꾸다가 에러 발생-_-;");
+	AfxMessageBox("IP주소 바꾸는 도중 에러 발생!");
 	return NULL;
 }
 
@@ -869,7 +869,7 @@ UINT TimeToLive(LPVOID lParam)
 	CDynamicRouterDlg *pDlg=(CDynamicRouterDlg*)lParam;	
 	LPARP_CACHE *arpCache=pDlg->m_ArpCache;
 	
-	unsigned char ppayload[3]="hi";
+	unsigned char ppayload[3]="DT";
 	
 	while(1){
 	
@@ -948,7 +948,7 @@ UINT RIPThread(LPVOID lParam)
 		}
 		pDlg->RefreshRoutingTable();
 
-		((CRIP*)pDlg->m_LayerMgr.GetLayer("RIP"))->TriggeredUpdate(update,"다보내라-_-");													
+		((CRIP*)pDlg->m_LayerMgr.GetLayer("RIP"))->TriggeredUpdate(update,"모든테이블업데이트");													
 		
 		g_cs2.Unlock();
 		Sleep(5000);
@@ -984,7 +984,7 @@ void CDynamicRouterDlg::OnButtonRoutingAllclear()
 
 	// start버튼이 눌려서 쓰레드가 돌고 있을경우 지워진 정보를 triggered
 	if(m_bSetButton)							
-		((CRIP*)mp_UnderLayer)->TriggeredUpdate(update,"다보내라~~-_-");
+		((CRIP*)mp_UnderLayer)->TriggeredUpdate(update,"모든테이블업데이트");
 	
 	for(i=0;i<MAX_ROUTING_TABLE;i++){
 		if(m_routingTable[i]){

@@ -87,7 +87,7 @@ void CProxyARP::OnButtonOk()
 	m_cbDevice.GetLBText(m_cbDevice.GetCurSel(),strCount);
 	
 	if( strCount.IsEmpty() || m_edIPAddr.IsEmpty() ){
-		AfxMessageBox("뭐여 빈칸 있잔아 후딱 다시써-_-");
+		AfxMessageBox("필수값이 존재하지 않습니다.");
 		return;
 	}
 	

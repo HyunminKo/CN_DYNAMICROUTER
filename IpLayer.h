@@ -41,8 +41,18 @@ public:
 		unsigned char	ip_data[SIZE_IP_DATA];
 	}IP, *LPIP;
 
+	typedef struct _ICMP{
+		unsigned char	icmp_type;
+		unsigned char	icmp_code;
+		unsigned short	icmp_cksum;
+		unsigned short	icmp_id;
+		unsigned short	icmp_seq;
+		unsigned char	icmp_data[SIZE_ICMP_DATA];
+	}ICMP, *LPICMP;
+
 	BOOL IsCorrectCheckSum(LPIP header);
 	void MakeCheckSum();
+	int ICMP_checksum(u_short* data,int len);
 	unsigned short m_ipFragment;
 	unsigned char* IPNetmask(unsigned char *dstIP, unsigned char *nestmask);
 	int FindDstOfTable(unsigned char *dstIP);

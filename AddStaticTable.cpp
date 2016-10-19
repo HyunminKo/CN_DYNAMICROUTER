@@ -73,7 +73,7 @@ BOOL CAddStaticTable::OnInitDialog()
 	}
 	
 	m_cbInterface.SetCurSel(0);
-	m_edDestination="200.200.0.0";
+	m_edDestination="192.168.2.1";
 	m_edNetmask="255.255.255.0";
 	m_edGateway="200.200.0.0";
 	m_bCheckUp=TRUE;
@@ -99,7 +99,7 @@ void CAddStaticTable::OnButtonAdd()
 	m_cbInterface.GetLBText(m_cbInterface.GetCurSel(),strCount);
 
 	if( strCount.IsEmpty() || m_edDestination.IsEmpty() || m_edGateway.IsEmpty() || m_edNetmask.IsEmpty() || m_edMetric.IsEmpty()){
-		AfxMessageBox("뭐여 빈칸 있잔아 후딱 다시써-_-");
+		AfxMessageBox("필수 값이 존재하지 않습니다.");
 		return;
 	}
 	
