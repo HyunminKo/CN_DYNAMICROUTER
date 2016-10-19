@@ -52,7 +52,7 @@ BOOL CProxyARP::OnInitDialog()
 	UpdateData(TRUE);
 	// TODO: Add extra initialization here
 	CDynamicRouterDlg *pDlg=(CDynamicRouterDlg*)AfxGetMainWnd();
-	LPMAC_ADDR *temp=pDlg->m_Addr;
+	ptrMAC_ADDR *temp=pDlg->m_Addr;
 
 	for(int i=0;i<MAX_ADAPTER_INFO;i++){
 		if(temp[i])
@@ -77,7 +77,7 @@ void CProxyARP::OnButtonOk()
 	// TODO: Add your control notification handler code here
 	CDynamicRouterDlg *pDlg=(CDynamicRouterDlg*)AfxGetMainWnd();
 	int nCount=pDlg->m_listctrlProxy.GetItemCount();	
-	LPARP_PROXY *arpProxy=pDlg->m_ArpProxy;
+	ptrARP_PROXY *arpProxy=pDlg->m_ArpProxy;
 	int availableNum=FindAvailableProxyNum();
 	LV_ITEM lvItem;
 	CString strCount;
@@ -105,7 +105,7 @@ void CProxyARP::OnButtonOk()
 		lvItem.pszText=(LPSTR)(LPCSTR)m_edIPAddr;
 		pDlg->m_listctrlProxy.SetItem(&lvItem);
 		
-		arpProxy[availableNum]=(LPARP_PROXY)malloc(sizeof(ARP_PROXY));
+		arpProxy[availableNum]=(ptrARP_PROXY)malloc(sizeof(ARP_PROXY));
 		sprintf(arpProxy[availableNum]->MacAddrDescrip,"%s",(LPSTR)(LPCSTR)strCount);
 		memcpy(arpProxy[availableNum]->IpAddress,pDlg->IpAddrStoN((LPSTR)(LPCSTR)m_edIPAddr),4);
 		arpProxy[availableNum]->DescriptoinSize=strlen(arpProxy[availableNum]->MacAddrDescrip);		
@@ -130,7 +130,7 @@ void CProxyARP::OnButtonCancel()
 int CProxyARP::FindAvailableProxyNum()
 {
 	CDynamicRouterDlg *pDlg=(CDynamicRouterDlg*)AfxGetMainWnd();
-	LPARP_PROXY *arpProxy=pDlg->m_ArpProxy;
+	ptrARP_PROXY *arpProxy=pDlg->m_ArpProxy;
 
 	for(int i=0;i<MAX_ARP_PROXY;i++){
 		if(!arpProxy[i])

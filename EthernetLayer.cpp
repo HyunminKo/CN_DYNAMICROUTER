@@ -49,7 +49,7 @@ BOOL CEthernetLayer::Receive(unsigned char *ppayload)
 {
 	
 	BOOL bSuccess=FALSE;
-	LPETHERNET header=(LPETHERNET)ppayload;	
+	ptrETHERNET header=(ptrETHERNET)ppayload;	
 	unsigned char broadCasting[6];
 	unsigned char multiCasting[6];
 

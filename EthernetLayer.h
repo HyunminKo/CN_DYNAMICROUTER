@@ -28,14 +28,14 @@ public:
 			unsigned char s_ether_addr[6];			
 		}S_un;
 
-	}ETHERNET_ADDR, *LPETHERNET_ADDR;
+	}ETHERNET_ADDR, *ptrETHERNET_ADDR;
 
 	typedef struct _ETHERNET{
 		ETHERNET_ADDR	enet_desAddr;
 		ETHERNET_ADDR	enet_srcAddr;
 		unsigned short	enet_frameType;
 		unsigned char	enet_data[SIZE_ETHERNET_DATA];
-	}ETHERNET, *LPETHERNET;
+	}ETHERNET, *ptrETHERNET;
 
 	ETHERNET m_header;
 

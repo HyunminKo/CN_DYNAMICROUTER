@@ -24,7 +24,7 @@ public:
 	virtual ~CRIP();
 	BOOL Send(int RIPtype);
 	BOOL Receive(unsigned char *ppayload, char* NICDescription, unsigned char* dstIPAddr);
-	CRoutingTable::LPROUTING_TABLE *m_routingTable;
+	CRoutingTable::ptrROUTING_TABLE *m_routingTable;
 
 	typedef struct _IP_ADDR{
 		union{
@@ -34,7 +34,7 @@ public:
 			unsigned char S_ip_addr[4];
 
 		};
-	}IP_ADDR, *LPIP_ADDR;
+	}IP_ADDR, *ptrIP_ADDR;
 
 	typedef struct _RIP_ADDR_INFO{
 		unsigned short		rm_addrfamily;
@@ -44,14 +44,14 @@ public:
 		IP_ADDR				rm_nexthopip;
 		unsigned int		rm_metric;
 
-	}RIP_ADDR_INFO, *LPRIP_ADDR_INFO;
+	}RIP_ADDR_INFO, *ptrRIP_ADDR_INFO;
 	
 	typedef struct _RIP{
 		unsigned char		rm_cmd;
 		unsigned char		rm_version;
 		unsigned short		rm_unused;		
 		RIP_ADDR_INFO		rm_addr[25];
-	}RIP, *LPRIP;
+	}RIP, *ptrRIP;
 
 	RIP m_header;
 };

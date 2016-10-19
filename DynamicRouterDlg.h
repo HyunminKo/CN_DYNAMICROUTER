@@ -45,7 +45,7 @@ public:
 	BOOL Send( unsigned char* ppayload, int nlength,unsigned char *dstAddr, unsigned char *deviceDescriptor);
 	void GetMacAddr();
 	void OnOK();
-	LPMAC_ADDR m_Addr[MAX_ADAPTER_INFO];
+	ptrMAC_ADDR m_Addr[MAX_ADAPTER_INFO];
 	MAC_ADDR m_srcAddr;
 	char* MacAddrNtoS(unsigned char *MAC);
 	char* IpAddrNtoS(unsigned char *IP);
@@ -58,9 +58,9 @@ public:
 	
 	BOOL m_bSetButton;
 	int m_nSetButtonFlag;
-	CRoutingTable::LPROUTING_TABLE *m_routingTable;
-	LPARP_CACHE m_ArpCache[MAX_ARP_CACHE];
-	LPARP_PROXY m_ArpProxy[MAX_ARP_PROXY];
+	CRoutingTable::ptrROUTING_TABLE *m_routingTable;
+	ptrARP_CACHE m_ArpCache[MAX_ARP_CACHE];
+	ptrARP_PROXY m_ArpProxy[MAX_ARP_PROXY];
 
 	enum{
 			SET_STATUS_START,

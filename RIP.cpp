@@ -94,7 +94,7 @@ BOOL CRIP::Receive(unsigned char *ppayload, char* NICDescription, unsigned char*
 {
 
 	BOOL bSuccess=FALSE;
-	LPRIP header=(LPRIP)ppayload;	
+	ptrRIP header=(ptrRIP)ppayload;	
 	CUDP* layer=NULL;
 	int i=0,n=0,num=0,availableNum=0, redundancyNum=0;
 	BOOL update[MAX_ROUTING_TABLE];
@@ -160,7 +160,7 @@ BOOL CRIP::Receive(unsigned char *ppayload, char* NICDescription, unsigned char*
 					if( (availableNum=FindAvailableStaticTableNum()) != -1 ){
 						if( ntohl(header->rm_addr[i].rm_metric) < 16){
 							update[availableNum]=TRUE;
-							m_routingTable[availableNum]=(CRoutingTable::LPROUTING_TABLE)malloc(sizeof(CRoutingTable::ROUTING_TABLE));			
+							m_routingTable[availableNum]=(CRoutingTable::ptrROUTING_TABLE)malloc(sizeof(CRoutingTable::ROUTING_TABLE));			
 							memcpy(m_routingTable[availableNum]->destination.S_ip_addr,header->rm_addr[i].rm_ip.S_ip_addr,4);
 							memcpy(m_routingTable[availableNum]->netmask.S_ip_addr,header->rm_addr[i].rm_subnetmask.S_ip_addr,4);
 							memcpy(m_routingTable[availableNum]->gateway.S_ip_addr,header->rm_addr[i].rm_nexthopip.S_ip_addr,4);				

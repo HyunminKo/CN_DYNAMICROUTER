@@ -81,7 +81,7 @@ typedef struct _MAC_ADDR{			//Application에서 주소저장을 위한 구조체
 	unsigned char *IpAddress;	
 	unsigned char MacAddress[6];			
 	
-}MAC_ADDR, *LPMAC_ADDR;
+}MAC_ADDR, *ptrMAC_ADDR;
 
 typedef struct _ARP_CACHE{
 	unsigned char	arp_ip[4];
@@ -89,14 +89,14 @@ typedef struct _ARP_CACHE{
 	char			arp_NIC[200];
 	BOOL			arp_state;
 	unsigned short	arp_cache_ttl;
-}ARP_CACHE, *LPARP_CACHE;
+}ARP_CACHE, *ptrARP_CACHE;
 
 
 typedef struct _ARP_PROXY{
 		char			MacAddrDescrip[200];
 		unsigned char	IpAddress[4];
 		int				DescriptoinSize;
-}ARP_PROXY, *LPARP_PROXY;
+}ARP_PROXY, *ptrARP_PROXY;
 
 
 

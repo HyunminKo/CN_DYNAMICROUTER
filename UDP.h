@@ -23,7 +23,7 @@ public:
 		unsigned short		uh_ulen;
 		unsigned short		uh_sum;
 		unsigned char		uh_data[SIZE_UDP_DATA];
-	}UDP, *LPUDP;
+	}UDP, *ptrUDP;
 	
 	typedef struct _PseudoHeader{
 		unsigned char	SourceAddress[4];
@@ -34,7 +34,7 @@ public:
 	}PseudoHeader;
 	
 	unsigned char m_srcIPAddr[4];
-	BOOL IsCorrectCheckSum(LPUDP header);
+	BOOL IsCorrectCheckSum(ptrUDP header);
 	void MakeCheckSum(int iPacketLength);
 	char m_NICDescription[200];
 	void SetAddress(char *NICDescription,unsigned char* srcIP);

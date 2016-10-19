@@ -31,7 +31,7 @@ public:
 		unsigned char	arp_targetEthernetAddr[6];
 		unsigned char	arp_targetIPAddr[4];
 		unsigned char	arp_data[SIZE_ARP_DATA];
-	}ARP, *LPARP;
+	}ARP, *ptrARP;
 
 	typedef struct _QUEUE{	
 		unsigned char queue_ip[4];
@@ -60,8 +60,8 @@ public:
 	virtual ~CArpLayer();	
 
 	ARP m_header;
-	LPARP_CACHE *arpCache;
-	LPARP_PROXY *arpProxy;	
+	ptrARP_CACHE *arpCache;
+	ptrARP_PROXY *arpProxy;	
 
 };
 

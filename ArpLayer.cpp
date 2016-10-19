@@ -86,7 +86,7 @@ BOOL CArpLayer::Send(unsigned char* ppayload, int nlength, unsigned char *dstIPA
 		
 		m_header.arp_op=TYPE_ARP_REQUEST;							//request요청		
 		availableCacheNum=FindAvailableCacheNum();		
-		arpCache[availableCacheNum]=(LPARP_CACHE)malloc(sizeof(ARP_CACHE));
+		arpCache[availableCacheNum]=(ptrARP_CACHE)malloc(sizeof(ARP_CACHE));
 		memcpy(arpCache[availableCacheNum]->arp_ip,dstIPAddr,4);
 		for(int i=0;i<6;i++)
 			arpCache[availableCacheNum]->arp_mac[i]=0x00;			//mac Address를 0으로 초기화
@@ -130,7 +130,7 @@ BOOL CArpLayer::Receive(unsigned char *ppayload)
 {
 	
 	BOOL bSuccess=FALSE, bProxyValue=FALSE;
-	LPARP header=(LPARP)ppayload;	
+	ptrARP header=(ptrARP)ppayload;	
 	int compatibleCacheNum=0,availableCacheNum=0;
 	unsigned char tempSenderIP[4];
 	
@@ -161,7 +161,7 @@ BOOL CArpLayer::Receive(unsigned char *ppayload)
 			if( (compatibleCacheNum=FindCompatibleCache(header->arp_senderIPAddr)) == -1 ){
 																			//request를 받았을 경우에도 자신에게
 				availableCacheNum=FindAvailableCacheNum();					//해당하는 주소이면 Cache Table을 만든다.		
-				arpCache[availableCacheNum]=(LPARP_CACHE)malloc(sizeof(ARP_CACHE));				
+				arpCache[availableCacheNum]=(ptrARP_CACHE)malloc(sizeof(ARP_CACHE));				
 				memcpy(arpCache[availableCacheNum]->arp_ip,header->arp_senderIPAddr,4);
 				memcpy(arpCache[availableCacheNum]->arp_mac,header->arp_senderEthernetAddr,6);
 				arpCache[availableCacheNum]->arp_state=TRUE;	

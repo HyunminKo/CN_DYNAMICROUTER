@@ -25,7 +25,7 @@ public:
 			unsigned char S_ip_addr[4];
 
 		};
-	}IP_ADDR, *LPIP_ADDR;
+	}IP_ADDR, *ptrIP_ADDR;
 
 	typedef struct _IP{		
 		unsigned char	ip_verlen;
@@ -39,7 +39,7 @@ public:
 		IP_ADDR			ip_source;
 		IP_ADDR			ip_destination;		
 		unsigned char	ip_data[SIZE_IP_DATA];
-	}IP, *LPIP;
+	}IP, *ptrIP;
 
 	typedef struct _ICMP{
 		unsigned char	icmp_type;
@@ -48,9 +48,9 @@ public:
 		unsigned short	icmp_id;
 		unsigned short	icmp_seq;
 		unsigned char	icmp_data[SIZE_ICMP_DATA];
-	}ICMP, *LPICMP;
+	}ICMP, *ptrICMP;
 
-	BOOL IsCorrectCheckSum(LPIP header);
+	BOOL IsCorrectCheckSum(ptrIP header);
 	void MakeCheckSum();
 	int ICMP_checksum(u_short* data,int len);
 	unsigned short m_ipFragment;
@@ -66,7 +66,7 @@ public:
 
 	
 	IP m_header;
-	CRoutingTable::LPROUTING_TABLE *m_routingTable;
+	CRoutingTable::ptrROUTING_TABLE *m_routingTable;
 
 };
 

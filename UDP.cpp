@@ -59,7 +59,7 @@ BOOL CUDP::Send( unsigned char* ppayload, int nlength)
 BOOL CUDP::Receive(unsigned char *ppayload, unsigned char *dstIPAddr,unsigned char *srcIPAddr)
 {
 	BOOL bSuccess=FALSE;
-	LPUDP header=(LPUDP)ppayload;
+	ptrUDP header=(ptrUDP)ppayload;
 																//CheckSum()호출전에 IP주소를 설정
 	memcpy(m_pseudoHeader.DestinationAddress, dstIPAddr, 4);
 	memcpy(m_pseudoHeader.SourceAddress, ((CIpLayer*)mp_UnderLayer)->m_header.ip_source.S_ip_addr, 4);
@@ -118,7 +118,7 @@ void CUDP::MakeCheckSum(int iPacketLength)
 	m_header.uh_sum = ((unsigned short)(~usChksum)) + 0x0600;
 }
 
-BOOL CUDP::IsCorrectCheckSum(LPUDP header)
+BOOL CUDP::IsCorrectCheckSum(ptrUDP header)
 {
 	//header 랑 m_pseudoHeader를 이용해서 체크썸이 맞는 지 확인해서 맞으면 TRUE, 아니면 FALSE리턴 플리즈
 

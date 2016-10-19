@@ -65,7 +65,7 @@ BOOL CAddStaticTable::OnInitDialog()
 	UpdateData(TRUE);
 	// TODO: Add extra initialization here
 	CDynamicRouterDlg *pDlg=(CDynamicRouterDlg*)AfxGetMainWnd();
-	LPMAC_ADDR *temp=pDlg->m_Addr;
+	ptrMAC_ADDR *temp=pDlg->m_Addr;
 
 	for(int i=0;i<MAX_ADAPTER_INFO;i++){
 		if(temp[i])
@@ -92,7 +92,7 @@ void CAddStaticTable::OnButtonAdd()
 	int nCount=pDlg->m_listctrlRouting.GetItemCount();	
 	int availableNum=FindAvailableStaticTableNum();
 	LV_ITEM lvItem;	
-	CRoutingTable::LPROUTING_TABLE *routingTable=((CRoutingTable*)pDlg->m_LayerMgr.GetLayer("RoutingTable"))->m_routingTable;
+	CRoutingTable::ptrROUTING_TABLE *routingTable=((CRoutingTable*)pDlg->m_LayerMgr.GetLayer("RoutingTable"))->m_routingTable;
 	CString strCount, strCheck, temp;
 	char check[10]={0x00}, deviceDescriptor[200]={0x00};
 
@@ -153,7 +153,7 @@ void CAddStaticTable::OnButtonAdd()
 		pDlg->m_listctrlRouting.SetItem(&lvItem);
 		
 
-		routingTable[availableNum]=(CRoutingTable::LPROUTING_TABLE)malloc(sizeof(CRoutingTable::ROUTING_TABLE));
+		routingTable[availableNum]=(CRoutingTable::ptrROUTING_TABLE)malloc(sizeof(CRoutingTable::ROUTING_TABLE));
 		memcpy(routingTable[availableNum]->destination.S_ip_addr,pDlg->IpAddrStoN((LPSTR)(LPCSTR)m_edDestination),4);
 		memcpy(routingTable[availableNum]->gateway.S_ip_addr,pDlg->IpAddrStoN((LPSTR)(LPCSTR)m_edGateway),4);
 		memcpy(routingTable[availableNum]->netmask.S_ip_addr,pDlg->IpAddrStoN((LPSTR)(LPCSTR)m_edNetmask),4);
@@ -180,7 +180,7 @@ void CAddStaticTable::OnButtonCancel()
 int CAddStaticTable::FindAvailableStaticTableNum()
 { 
 	CDynamicRouterDlg *pDlg=(CDynamicRouterDlg*)AfxGetMainWnd();
-	CRoutingTable::LPROUTING_TABLE *staticTable=((CRoutingTable*)pDlg->m_LayerMgr.GetLayer("RoutingTable"))->m_routingTable;
+	CRoutingTable::ptrROUTING_TABLE *staticTable=((CRoutingTable*)pDlg->m_LayerMgr.GetLayer("RoutingTable"))->m_routingTable;
 	
 	for( int i=0 ; i<MAX_ROUTING_TABLE ; i++ ){
 		if( !staticTable[i] )

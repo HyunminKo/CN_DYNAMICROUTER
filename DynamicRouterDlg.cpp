@@ -327,7 +327,7 @@ void CDynamicRouterDlg::GetMacAddr()
 	{
 		if (*temp=='\0')						//검색된 어댑터이름을 배열에 저장
 		{
-			m_Addr[i]=(LPMAC_ADDR)malloc(sizeof(MAC_ADDR));
+			m_Addr[i]=(ptrMAC_ADDR)malloc(sizeof(MAC_ADDR));
 			sprintf(m_Addr[i]->MacAddrName,"%s",temp1);
 			temp1=temp+1;
 			i++;
@@ -867,7 +867,7 @@ UINT TimeToLive(LPVOID lParam)
 {	
 	
 	CDynamicRouterDlg *pDlg=(CDynamicRouterDlg*)lParam;	
-	LPARP_CACHE *arpCache=pDlg->m_ArpCache;
+	ptrARP_CACHE *arpCache=pDlg->m_ArpCache;
 	
 	unsigned char ppayload[3]="DT";
 	
@@ -1023,7 +1023,7 @@ void CDynamicRouterDlg::OnButtonOpen()
 	char buff[232]={0x00}, charMetric[5]={0x00};
 	int availableNum=0,nCount=0, i=0;
 	LV_ITEM lvItem;	
-	CRoutingTable::LPROUTING_TABLE temp;
+	CRoutingTable::ptrROUTING_TABLE temp;
 		
 	FILE *fp=fopen("StaticTable.txt","r");
 	
@@ -1041,9 +1041,9 @@ void CDynamicRouterDlg::OnButtonOpen()
 	RefreshRoutingTable();
 	
 	while(fread(buff,sizeof(CRoutingTable::_ROUTING_TABLE),1,fp)!=0){				
-		temp=(CRoutingTable::LPROUTING_TABLE)buff;
+		temp=(CRoutingTable::ptrROUTING_TABLE)buff;
 		availableNum=FindAvailableStaticTableNum();		
-		m_routingTable[availableNum]=(CRoutingTable::LPROUTING_TABLE)malloc(sizeof(CRoutingTable::ROUTING_TABLE));
+		m_routingTable[availableNum]=(CRoutingTable::ptrROUTING_TABLE)malloc(sizeof(CRoutingTable::ROUTING_TABLE));
 		memcpy(m_routingTable[availableNum]->destination.S_ip_addr,temp->destination.S_ip_addr,4);
 		memcpy(m_routingTable[availableNum]->netmask.S_ip_addr,temp->netmask.S_ip_addr,4);
 		memcpy(m_routingTable[availableNum]->gateway.S_ip_addr,temp->gateway.S_ip_addr,4);

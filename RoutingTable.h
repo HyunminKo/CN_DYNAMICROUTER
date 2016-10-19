@@ -26,7 +26,7 @@ public:
 			unsigned char S_ip_addr[4];
 
 		};
-	}IP_ADDR, *LPIP_ADDR;
+	}IP_ADDR, *ptrIP_ADDR;
 
 	typedef struct _ROUTING_TABLE{
 		IP_ADDR		destination;
@@ -36,10 +36,10 @@ public:
 		char		device_descripter[200];		
 		int			metric;
 		int			cnt;
-	}ROUTING_TABLE, *LPROUTING_TABLE;
+	}ROUTING_TABLE, *ptrROUTING_TABLE;
 	
 
-	LPROUTING_TABLE m_routingTable[MAX_ROUTING_TABLE];
+	ptrROUTING_TABLE m_routingTable[MAX_ROUTING_TABLE];
 
 };
 

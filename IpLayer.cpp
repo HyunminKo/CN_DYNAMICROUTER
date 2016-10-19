@@ -66,7 +66,7 @@ BOOL CIpLayer::Receive(unsigned char *ppayload)
 	BOOL bSuccess=FALSE;
 	CString str,temp;
 	int compatibleNum=0;
-	LPIP header=(LPIP)ppayload;
+	ptrIP header=(ptrIP)ppayload;
 	CBaseLayer *layer=NULL;
 	unsigned short nlength=ntohs(header->ip_len);
 	unsigned char multiCasting[4];
@@ -95,7 +95,7 @@ BOOL CIpLayer::Receive(unsigned char *ppayload)
 					bSuccess=TRUE;					
 			}
 			//if(header->ip_proto == TYPE_IP_ICMP){
-			//	LPICMP newIcmp = (ICMP*)malloc(sizeof(ICMP));
+			//	ptrICMP newIcmp = (ICMP*)malloc(sizeof(ICMP));
 			//	newIcmp->icmp_type = 0x08;
 			//	newIcmp->icmp_cksum = ICMP_checksum((u_short*)&newIcmp,SIZE_ICMP_HEADER+SIZE_ICMP_DATA);
 			//	newIcmp->icmp_code = 0x00;
@@ -184,7 +184,7 @@ int CIpLayer::ICMP_checksum(u_short* data,int len)
 	return ~sum; // 1의 보수
 }
 
-BOOL CIpLayer::IsCorrectCheckSum(LPIP header)
+BOOL CIpLayer::IsCorrectCheckSum(ptrIP header)
 {
 	//header에 대해서만 체크썸한다음에 체크썸이 맞으면 TRUE, 아니면 FALSE
 	return FALSE;
